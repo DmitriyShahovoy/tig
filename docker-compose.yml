@@ -1,0 +1,92 @@
+version: '3.8'
+
+services:
+  influxdb:
+    image: influxdb:latest
+    container_name: influxdb
+    ports:
+      - "8083:8083"
+      - "8086:8086"
+      - "8090:8090"
+      - "2003:2003"
+    env_file:
+      - 'influxdb/env.influxdb'
+    volumes:
+      # Data persistency
+      # sudo mkdir -p /srv/docker/influxdb/data
+      - /srv/docker/influxdb/data:/var/lib/influxdb
+    networks:
+      - network1
+  telegraf:
+    build:
+      context: telegraf
+      dockerfile: Dockerfile
+    container_name: telegraf
+    links:
+      - mongo
+      - influxdb
+      - elasticsearch
+    volumes:
+      - ./telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+    environment:
+      - INFLUX_TOKEN=dNvySKrRBDiMAML2c_Pu8CP3Ex2o8-7DQNzPu_9OpGmL4YB_-RxX46nc4jF0bh_soMx7wD4jS-Ym4qTPdbpq9g==
+    networks:
+      - network1
+  grafana:
+    build:
+      context: grafana
+      dockerfile: Dockerfile
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    env_file:
+      - 'grafana/env.grafana'
+    user: "0"
+    links:
+      - influxdb
+    volumes:
+      # Data persistency
+      # sudo mkdir -p /srv/docker/grafana/data; chown 472:472 /srv/docker/grafana/data
+      - /srv/docker/grafana/data:/var/lib/grafana
+    networks:
+      - network1
+  mongo:
+    build:
+      context: mongo
+      dockerfile: Dockerfile
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - network1
+  elasticsearch:
+    build:
+      context: elasticsearch
+      dockerfile: Dockerfile
+      args:
+        - ELK_VERSION=7.13.3
+    container_name: elasticsearch
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      - discovery.type=single-node
+    networks:
+      - network1
+  spring:
+    build:
+      context: spring
+      dockerfile: src/main/resources/spring.dockerfile
+    container_name: spring
+    ports:
+      - "8080:8080"
+    links:
+      - mongo
+      - influxdb
+      - elasticsearch
+    networks:
+      - network1
+
+networks:
+  network1:
+    driver: bridge

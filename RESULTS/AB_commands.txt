@@ -1,0 +1,212 @@
+PS D:\Work\Apache24\bin> ab -n 100 -c 10 http://localhost:8080/find
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient).....done
+
+
+Server Software:
+Server Hostname:        localhost
+Server Port:            8080
+
+Document Path:          /find
+Document Length:        7 bytes
+
+Concurrency Level:      10
+Time taken for tests:   0.632 seconds
+Complete requests:      100
+Failed requests:        0
+Total transferred:      14400 bytes
+HTML transferred:       700 bytes
+Requests per second:    158.21 [#/sec] (mean)
+Time per request:       63.208 [ms] (mean)
+Time per request:       6.321 [ms] (mean, across all concurrent requests)
+Transfer rate:          22.25 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    1   0.5      1       2
+Processing:    28   57  16.5     54     109
+Waiting:       24   55  16.5     52     107
+Total:         29   58  16.5     54     109
+
+Percentage of the requests served within a certain time (ms)
+  50%     54
+  66%     64
+  75%     70
+  80%     73
+  90%     84
+  95%     89
+  98%     99
+  99%    109
+ 100%    109 (longest request)
+
+
+PS D:\Work\Apache24\bin> ab -n 1000 -c 100 http://localhost:8080/find
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 100 requests
+Completed 200 requests
+Completed 300 requests
+Completed 400 requests
+Completed 500 requests
+Completed 600 requests
+Completed 700 requests
+Completed 800 requests
+Completed 900 requests
+Completed 1000 requests
+Finished 1000 requests
+
+
+Server Software:
+Server Hostname:        localhost
+Server Port:            8080
+
+Document Path:          /find
+Document Length:        7 bytes
+
+Concurrency Level:      100
+Time taken for tests:   3.072 seconds
+Complete requests:      1000
+Failed requests:        0
+Total transferred:      144000 bytes
+HTML transferred:       7000 bytes
+Requests per second:    325.56 [#/sec] (mean)
+Time per request:       307.166 [ms] (mean)
+Time per request:       3.072 [ms] (mean, across all concurrent requests)
+Transfer rate:          45.78 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    1   0.5      1       2
+Processing:    36  295 124.4    294     815
+Waiting:       17  259 121.6    247     732
+Total:         36  296 124.4    295     816
+
+Percentage of the requests served within a certain time (ms)
+  50%    295
+  66%    360
+  75%    393
+  80%    411
+  90%    441
+  95%    471
+  98%    576
+  99%    641
+ 100%    816 (longest request)
+
+
+PS D:\Work\Apache24\bin> ab -n 1000 -c 100 http://localhost:8080/save
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 100 requests
+Completed 200 requests
+Completed 300 requests
+Completed 400 requests
+Completed 500 requests
+Completed 600 requests
+Completed 700 requests
+Completed 800 requests
+Completed 900 requests
+Completed 1000 requests
+Finished 1000 requests
+
+
+Server Software:
+Server Hostname:        localhost
+Server Port:            8080
+
+Document Path:          /save
+Document Length:        7 bytes
+
+Concurrency Level:      100
+Time taken for tests:   5.380 seconds
+Complete requests:      1000
+Failed requests:        0
+Total transferred:      144000 bytes
+HTML transferred:       7000 bytes
+Requests per second:    185.86 [#/sec] (mean)
+Time per request:       538.029 [ms] (mean)
+Time per request:       5.380 [ms] (mean, across all concurrent requests)
+Transfer rate:          26.14 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    1   0.5      1       2
+Processing:    94  524  72.8    519     711
+Waiting:       26  520  73.0    515     711
+Total:         95  524  72.8    519     712
+
+Percentage of the requests served within a certain time (ms)
+  50%    519
+  66%    541
+  75%    555
+  80%    569
+  90%    614
+  95%    648
+  98%    688
+  99%    696
+ 100%    712 (longest request)
+
+
+PS D:\Work\Apache24\bin> ab -n 2000 -c 200 http://localhost:8080/find
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 200 requests
+Completed 400 requests
+Completed 600 requests
+Completed 800 requests
+Completed 1000 requests
+Completed 1200 requests
+Completed 1400 requests
+Completed 1600 requests
+Completed 1800 requests
+Completed 2000 requests
+Finished 2000 requests
+
+
+Server Software:
+Server Hostname:        localhost
+Server Port:            8080
+
+Document Path:          /find
+Document Length:        7 bytes
+
+Concurrency Level:      200
+Time taken for tests:   66.443 seconds
+Complete requests:      2000
+Failed requests:        0
+Total transferred:      288000 bytes
+HTML transferred:       14000 bytes
+Requests per second:    30.10 [#/sec] (mean)
+Time per request:       6644.289 [ms] (mean)
+Time per request:       33.221 [ms] (mean, across all concurrent requests)
+Transfer rate:          4.23 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.5      0       1
+Processing:   154 6499 1280.5   6801   11365
+Waiting:       32 6499 1280.8   6801   11363
+Total:        155 6499 1280.5   6802   11365
+
+Percentage of the requests served within a certain time (ms)
+  50%   6802
+  66%   7170
+  75%   7353
+  80%   7470
+  90%   7749
+  95%   8011
+  98%   8373
+  99%   8711
+ 100%  11365 (longest request)
+ 
